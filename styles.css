@@ -16,12 +16,12 @@ body {
     text-align: center;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     width: 90%;
-    max-width: 400px;
+    max-width: 410px;
 }
 
 #clock {
-    font-size: 3em;
-    color: #ff4500;
+    font-size: 4em;
+    color: #dfd8d6;
 }
 
 .controls {
@@ -29,7 +29,7 @@ body {
 }
 
 button {
-    background-color: #9c9e9e;
+    background-color: #333535;
     border: none;
     color: white;
     padding: 10px 20px;
@@ -45,6 +45,6 @@ button:hover {
 
 #alarmMessage {
     margin-top: 20px;
-    color: #ff4500;
+    color: #dfd8d6;
     font-size: 1.2em;
 }
