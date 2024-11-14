@@ -40,14 +40,20 @@ Clock.prototype.checkAlarm = function() {
     if (this.alarmTime) {
         let currentTime = `${this.pad(this.hours)}:${this.pad(this.minutes)}`;
         if (currentTime === this.alarmTime) {
-            document.getElementById('alarmMessage').innerText = 'Alarm! Time to wake up!';
+            document.getElementById('alarmMessage').innerText = 'Alarm! Time up!';
         }
     }
 };
 
+// Create a single Clock instance
+let clock = new Clock();
+
 // Function to update the clock display
 function updateClock() {
-    let clock = new Clock();
+    clock.date = new Date();
+    clock.hours = clock.date.getHours();
+    clock.minutes = clock.date.getMinutes();
+    clock.seconds = clock.date.getSeconds();
     let timeDisplay = clock.is24HourFormat ? clock.getFormattedTime() : clock.get12HourTime();
     document.getElementById('clock').innerText = timeDisplay;
     clock.checkAlarm();
@@ -55,7 +61,6 @@ function updateClock() {
 
 // Event listener for format toggle button
 document.getElementById('toggleFormat').addEventListener('click', function() {
-    let clock = new Clock();
     clock.toggleFormat();
     this.innerText = clock.is24HourFormat ? 'Switch to 12-Hour Format' : 'Switch to 24-Hour Format';
     updateClock();
@@ -63,7 +68,6 @@ document.getElementById('toggleFormat').addEventListener('click', function() {
 
 // Event listener for setting the alarm
 document.getElementById('setAlarm').addEventListener('click', function() {
-    let clock = new Clock();
     let alarmTime = document.getElementById('alarmTime').value;
     clock.setAlarm(alarmTime);
     document.getElementById('alarmMessage').innerText = `Alarm set for ${alarmTime}`;
